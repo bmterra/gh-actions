@@ -12,21 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM quay.io/terraform-docs/terraform-docs:0.16.0
-
+#FROM quay.io/terraform-docs/terraform-docs:0.16.0
+FROM  docker.io/bterra/terraform-docs:latest
 # this is explicitly needed because yq v4.x only exists in this repo.
 RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
 RUN set -x \
-    && apk update \
-    && apk add --no-cache \
+    && apk update
+RUN apk add --no-cache \
         bash \
         git \
         git-lfs \
         jq \
         openssh \
         sed \
-        yq
+        yq \
+        gpg
 
 COPY ./src/docker-entrypoint.sh /docker-entrypoint.sh
 
