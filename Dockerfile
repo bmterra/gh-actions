@@ -26,7 +26,8 @@ RUN set -x \
         jq \
         openssh \
         sed \
-        yq
+        yq \
+        gpg
 
 COPY ./src/docker-entrypoint.sh /docker-entrypoint.sh
 
